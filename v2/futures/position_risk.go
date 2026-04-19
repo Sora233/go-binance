@@ -57,6 +57,7 @@ type PositionRisk struct {
 	PositionSide     string `json:"positionSide"`
 	Notional         string `json:"notional"`
 	IsolatedWallet   string `json:"isolatedWallet"`
+	UpdateTime       int64  `json:"updateTime"`
 }
 
 type GetPositionRiskV3Service struct {
