@@ -799,3 +799,8 @@ func (c *Client) NewListOpenAlgoOrdersService() *ListOpenAlgoOrdersService {
 func (c *Client) NewListAllAlgoOrdersService() *ListAllAlgoOrdersService {
 	return &ListAllAlgoOrdersService{c: c}
 }
+
+// NewSignStockContractService creates a new SignStockContractService.
+func (c *Client) NewSignStockContractService() *SignStockContractService {
+	return &SignStockContractService{c: c}
+}
