@@ -463,6 +463,146 @@ type WsUserDataHandler interface {
 	HandleConditionalOrderTradeUpdate(*WsConditionalOrderTradeUpdate)
 }
 
+type wsUserDataHandlerPartialFunc struct {
+	_HandleListenKeyExpired            func(*WsListenKeyExpired)
+	_HandleMarginBalanceUpdate         func(*WsMarginBalanceUpdate)
+	_HandleRiskLevelChange             func(*WsRiskLevelChange)
+	_HandleFuturesAccountConfigUpdate  func(*WsFuturesAccountConfigUpdate)
+	_HandleFuturesAccountUpdate        func(*WsFuturesAccountUpdate)
+	_HandleFuturesOrderUpdate          func(*WsFuturesOrderUpdate)
+	_HandleMarginOrderUpdate           func(*WsMarginOrderUpdate)
+	_HandleLiabilityUpdate             func(*WsLiabilityUpdate)
+	_HandleMarginAccountUpdate         func(*WsMarginAccountUpdate)
+	_HandleOpenOrderLossUpdate         func(*WsOpenOrderLossUpdate)
+	_HandleConditionalOrderTradeUpdate func(*WsConditionalOrderTradeUpdate)
+}
+
+// NewWsUserDataHandlerPartial 创建一个仅对部分事件注册了回调的用户数据处理器，未通过 With 设置的回调不会在对应事件发生时执行。
+func NewWsUserDataHandlerPartial() *wsUserDataHandlerPartialFunc {
+	return &wsUserDataHandlerPartialFunc{}
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithListenKeyExpired(fn func(*WsListenKeyExpired)) *wsUserDataHandlerPartialFunc {
+	h._HandleListenKeyExpired = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithMarginBalanceUpdate(fn func(*WsMarginBalanceUpdate)) *wsUserDataHandlerPartialFunc {
+	h._HandleMarginBalanceUpdate = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithRiskLevelChange(fn func(*WsRiskLevelChange)) *wsUserDataHandlerPartialFunc {
+	h._HandleRiskLevelChange = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithFuturesAccountConfigUpdate(fn func(*WsFuturesAccountConfigUpdate)) *wsUserDataHandlerPartialFunc {
+	h._HandleFuturesAccountConfigUpdate = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithFuturesAccountUpdate(fn func(*WsFuturesAccountUpdate)) *wsUserDataHandlerPartialFunc {
+	h._HandleFuturesAccountUpdate = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithFuturesOrderUpdate(fn func(*WsFuturesOrderUpdate)) *wsUserDataHandlerPartialFunc {
+	h._HandleFuturesOrderUpdate = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithMarginOrderUpdate(fn func(*WsMarginOrderUpdate)) *wsUserDataHandlerPartialFunc {
+	h._HandleMarginOrderUpdate = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithLiabilityUpdate(fn func(*WsLiabilityUpdate)) *wsUserDataHandlerPartialFunc {
+	h._HandleLiabilityUpdate = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithMarginAccountUpdate(fn func(*WsMarginAccountUpdate)) *wsUserDataHandlerPartialFunc {
+	h._HandleMarginAccountUpdate = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithOpenOrderLossUpdate(fn func(*WsOpenOrderLossUpdate)) *wsUserDataHandlerPartialFunc {
+	h._HandleOpenOrderLossUpdate = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) WithConditionalOrderTradeUpdate(fn func(*WsConditionalOrderTradeUpdate)) *wsUserDataHandlerPartialFunc {
+	h._HandleConditionalOrderTradeUpdate = fn
+	return h
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleListenKeyExpired(ev *WsListenKeyExpired) {
+	if h._HandleListenKeyExpired != nil {
+		h._HandleListenKeyExpired(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleMarginBalanceUpdate(ev *WsMarginBalanceUpdate) {
+	if h._HandleMarginBalanceUpdate != nil {
+		h._HandleMarginBalanceUpdate(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleRiskLevelChange(ev *WsRiskLevelChange) {
+	if h._HandleRiskLevelChange != nil {
+		h._HandleRiskLevelChange(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleFuturesAccountConfigUpdate(ev *WsFuturesAccountConfigUpdate) {
+	if h._HandleFuturesAccountConfigUpdate != nil {
+		h._HandleFuturesAccountConfigUpdate(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleFuturesAccountUpdate(ev *WsFuturesAccountUpdate) {
+	if h._HandleFuturesAccountUpdate != nil {
+		h._HandleFuturesAccountUpdate(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleFuturesOrderUpdate(ev *WsFuturesOrderUpdate) {
+	if h._HandleFuturesOrderUpdate != nil {
+		h._HandleFuturesOrderUpdate(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleMarginOrderUpdate(ev *WsMarginOrderUpdate) {
+	if h._HandleMarginOrderUpdate != nil {
+		h._HandleMarginOrderUpdate(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleLiabilityUpdate(ev *WsLiabilityUpdate) {
+	if h._HandleLiabilityUpdate != nil {
+		h._HandleLiabilityUpdate(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleMarginAccountUpdate(ev *WsMarginAccountUpdate) {
+	if h._HandleMarginAccountUpdate != nil {
+		h._HandleMarginAccountUpdate(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleOpenOrderLossUpdate(ev *WsOpenOrderLossUpdate) {
+	if h._HandleOpenOrderLossUpdate != nil {
+		h._HandleOpenOrderLossUpdate(ev)
+	}
+}
+
+func (h *wsUserDataHandlerPartialFunc) HandleConditionalOrderTradeUpdate(ev *WsConditionalOrderTradeUpdate) {
+	if h._HandleConditionalOrderTradeUpdate != nil {
+		h._HandleConditionalOrderTradeUpdate(ev)
+	}
+}
+
 func wsUserDataHandler(handler WsUserDataHandler) func(message []byte) {
 	return func(message []byte) {
 		var event struct {
