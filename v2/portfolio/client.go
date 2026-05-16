@@ -910,16 +910,6 @@ func (c *Client) NewMarginForceOrdersService() *MarginForceOrdersService {
 	return &MarginForceOrdersService{c: c}
 }
 
-// NewUMAccountTradeService creates a new UMAccountTradeService
-func (c *Client) NewUMAccountTradeService() *UMAccountTradeService {
-	return &UMAccountTradeService{c: c}
-}
-
-// NewCMAccountTradeService creates a new CMAccountTradeService
-func (c *Client) NewCMAccountTradeService() *CMAccountTradeService {
-	return &CMAccountTradeService{c: c}
-}
-
 // NewUMADLQuantileService creates a new UMADLQuantileService
 func (c *Client) NewUMADLQuantileService() *UMADLQuantileService {
 	return &UMADLQuantileService{c: c}
@@ -1013,4 +1003,9 @@ func (c *Client) NewKeepaliveUserStreamService() *KeepaliveUserStreamService {
 // NewCloseUserStreamService init closing user stream service
 func (c *Client) NewCloseUserStreamService() *CloseUserStreamService {
 	return &CloseUserStreamService{c: c}
+}
+
+// NewSignStockContractService creates a new SignStockContractService.
+func (c *Client) NewSignStockContractService() *SignStockContractService {
+	return &SignStockContractService{c: c}
 }

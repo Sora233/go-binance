@@ -7,6 +7,26 @@ import (
 	"net/http"
 )
 
+// CMAccountTrade define CM account trade
+type CMAccountTrade struct {
+	Symbol          string `json:"symbol"`
+	ID              int64  `json:"id"`
+	OrderID         int64  `json:"orderId"`
+	Pair            string `json:"pair"`
+	Side            string `json:"side"`
+	Price           string `json:"price"`
+	Qty             string `json:"qty"`
+	RealizedPnl     string `json:"realizedPnl"`
+	MarginAsset     string `json:"marginAsset"`
+	BaseQty         string `json:"baseQty"`
+	Commission      string `json:"commission"`
+	CommissionAsset string `json:"commissionAsset"`
+	Time            int64  `json:"time"`
+	PositionSide    string `json:"positionSide"`
+	Buyer           bool   `json:"buyer"`
+	Maker           bool   `json:"maker"`
+}
+
 // CMAccountTradesService service to get CM account trade list
 type CMAccountTradesService struct {
 	c          *Client
@@ -113,24 +133,4 @@ func (s *CMAccountTradesService) Do(ctx context.Context) ([]*CMAccountTrade, err
 		return nil, err
 	}
 	return res, nil
-}
-
-// CMAccountTrade define CM account trade
-type CMAccountTrade struct {
-	Symbol          string `json:"symbol"`
-	ID              int64  `json:"id"`
-	OrderID         int64  `json:"orderId"`
-	Pair            string `json:"pair"`
-	Side            string `json:"side"`
-	Price           string `json:"price"`
-	Qty             string `json:"qty"`
-	RealizedPnl     string `json:"realizedPnl"`
-	MarginAsset     string `json:"marginAsset"`
-	BaseQty         string `json:"baseQty"`
-	Commission      string `json:"commission"`
-	CommissionAsset string `json:"commissionAsset"`
-	Time            int64  `json:"time"`
-	PositionSide    string `json:"positionSide"`
-	Buyer           bool   `json:"buyer"`
-	Maker           bool   `json:"maker"`
 }

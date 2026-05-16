@@ -6,6 +6,24 @@ import (
 	"net/http"
 )
 
+// UMAccountTrade define UM account trade
+type UMAccountTrade struct {
+	Symbol          string `json:"symbol"`
+	ID              int64  `json:"id"`
+	OrderID         int64  `json:"orderId"`
+	Side            string `json:"side"`
+	Price           string `json:"price"`
+	Qty             string `json:"qty"`
+	RealizedPnl     string `json:"realizedPnl"`
+	QuoteQty        string `json:"quoteQty"`
+	Commission      string `json:"commission"`
+	CommissionAsset string `json:"commissionAsset"`
+	Time            int64  `json:"time"`
+	Buyer           bool   `json:"buyer"`
+	Maker           bool   `json:"maker"`
+	PositionSide    string `json:"positionSide"`
+}
+
 // UMAccountTradesService service to get UM account trade list
 type UMAccountTradesService struct {
 	c          *Client
