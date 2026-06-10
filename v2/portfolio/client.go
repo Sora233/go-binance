@@ -705,6 +705,10 @@ func (c *Client) NewUMConditionalOrderService() *UMConditionalOrderService {
 	return &UMConditionalOrderService{c: c}
 }
 
+func (c *Client) NewUMAlgoOrderService() *UMAlgoOrderService {
+	return &UMAlgoOrderService{c: c}
+}
+
 // NewCMOrderService creates a new CMOrderService
 func (c *Client) NewCMOrderService() *CMOrderService {
 	return &CMOrderService{c: c}
