@@ -700,12 +700,6 @@ func (c *Client) NewUMOrderService() *UMOrderService {
 	return &UMOrderService{c: c}
 }
 
-// Deprecated: use NewUMAlgoOrderService instead
-// NewUMConditionalOrderService init UM conditional order service
-func (c *Client) NewUMConditionalOrderService() *UMConditionalOrderService {
-	return &UMConditionalOrderService{c: c}
-}
-
 func (c *Client) NewUMAlgoOrderService() *UMAlgoOrderService {
 	return &UMAlgoOrderService{c: c}
 }
@@ -750,9 +744,9 @@ func (c *Client) NewUMCancelAllOrdersService() *UMCancelAllOrdersService {
 	return &UMCancelAllOrdersService{c: c}
 }
 
-// NewUMCancelConditionalOrderService creates a new UMCancelConditionalOrderService
-func (c *Client) NewUMCancelConditionalOrderService() *UMCancelConditionalOrderService {
-	return &UMCancelConditionalOrderService{c: c}
+// NewUMCancelAlgoOrderService creates a new UMCancelAlgoOrderService
+func (c *Client) NewUMCancelAlgoOrderService() *UMCancelAlgoOrderService {
+	return &UMCancelAlgoOrderService{c: c}
 }
 
 // NewUMCancelAllConditionalOrdersService creates a new UMCancelAllConditionalOrdersService
@@ -830,14 +824,8 @@ func (c *Client) NewUMAllConditionalOrdersService() *UMAllConditionalOrdersServi
 	return &UMAllConditionalOrdersService{c: c}
 }
 
-// NewUMOpenConditionalOrdersService creates a new UMOpenConditionalOrdersService
-func (c *Client) NewUMOpenConditionalOrdersService() *UMOpenConditionalOrdersService {
-	return &UMOpenConditionalOrdersService{c: c}
-}
-
-// NewUMOpenConditionalOrderService creates a new UMOpenConditionalOrderService
-func (c *Client) NewUMOpenConditionalOrderService() *UMOpenConditionalOrderService {
-	return &UMOpenConditionalOrderService{c: c}
+func (c *Client) NewUMOpenAlgoOrdersService() *UMOpenAlgoOrdersService {
+	return &UMOpenAlgoOrdersService{c: c}
 }
 
 // NewUMConditionalOrderHistoryService creates a new UMConditionalOrderHistoryService
