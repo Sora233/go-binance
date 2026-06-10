@@ -700,6 +700,7 @@ func (c *Client) NewUMOrderService() *UMOrderService {
 	return &UMOrderService{c: c}
 }
 
+// Deprecated: use NewUMAlgoOrderService instead
 // NewUMConditionalOrderService init UM conditional order service
 func (c *Client) NewUMConditionalOrderService() *UMConditionalOrderService {
 	return &UMConditionalOrderService{c: c}
