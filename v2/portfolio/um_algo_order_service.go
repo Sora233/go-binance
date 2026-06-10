@@ -145,6 +145,12 @@ func (s *UMAlgoOrderService) Do(ctx context.Context, opts ...RequestOption) (res
 	if s.quantity != nil {
 		r.setParam("quantity", *s.quantity)
 	}
+	if s.reduceOnly != nil {
+		r.setParam("reduceOnly", *s.reduceOnly)
+	}
+	if s.triggerPrice != nil {
+		r.setParam("triggerPrice", *s.triggerPrice)
+	}
 	if s.price != nil {
 		r.setParam("price", *s.price)
 	}
@@ -161,7 +167,7 @@ func (s *UMAlgoOrderService) Do(ctx context.Context, opts ...RequestOption) (res
 		r.setParam("priceProtect", *s.priceProtect)
 	}
 	if s.clientAlgoId != nil {
-		r.setParam("clientAlgoId", s.clientAlgoId)
+		r.setParam("clientAlgoId", *s.clientAlgoId)
 	}
 
 	data, _, err := s.c.callAPI(ctx, r, opts...)
